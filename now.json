@@ -3,7 +3,7 @@
     "scope": "ecwyne",
     "version": 2,
     "alias": ["rankvote.now.sh"],
-    "regions": ["sfo1", "iad1"],
+    "regions": ["sfo1"],
     "builds": [
         {
             "src": "package.json",
