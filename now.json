@@ -1,5 +1,6 @@
 {
     "name": "rank-vote",
+    "scope": "ecwyne",
     "version": 2,
     "alias": ["rankvote.now.sh"],
     "regions": ["sfo1", "iad1"],
