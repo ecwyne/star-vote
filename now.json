@@ -2,7 +2,7 @@
     "name": "rank-vote",
     "scope": "ecwyne",
     "version": 2,
-    "alias": ["rankvote.now.sh"],
+    "alias": ["rankvote.now.sh", "starvote.now.sh"],
     "regions": ["sfo1"],
     "builds": [
         {
