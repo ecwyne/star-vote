@@ -14,6 +14,7 @@ type BallotProps = { id: string; options: string[]; votes: number[][] };
 const Ballot: React.FC<BallotProps> = ({ id, options, votes }) => {
     const [ratings, { updateAt }] = useList<number>();
     const [copied, setCopied] = useState(false);
+    const [countdown, setCountdown] = useState(30);
     useEffect(() => {
         if (copied) {
             const i = setTimeout(() => {
@@ -22,6 +23,17 @@ const Ballot: React.FC<BallotProps> = ({ id, options, votes }) => {
             return () => clearTimeout(i);
         }
     }, [copied]);
+    useEffect(() => {
+        const i = setInterval(() => {
+            setCountdown(n => (n === 0 ? 0 : n - 1));
+        }, 1000);
+        return () => clearInterval(i);
+    }, []);
+    useEffect(() => {
+        if (votes.length && countdown === 0) {
+            Router.replace(Router.asPath).then(() => setCountdown(30));
+        }
+    }, [countdown]);
     const sorted = options
         .map((key, i) => ({
             key,
@@ -98,6 +110,13 @@ const Ballot: React.FC<BallotProps> = ({ id, options, votes }) => {
                                 />
                             </Box>
                         ))}
+                        <Typography
+                            component="div"
+                            variant="caption"
+                            align="center"
+                        >
+                            Refreshing results in {countdown} seconds...
+                        </Typography>
                     </Box>
                 ) : (
                     <Box padding={3}>
