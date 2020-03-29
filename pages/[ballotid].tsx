@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import { Container, Box, Typography, Paper, Button } from '@material-ui/core';
 import hash from '../lib/hashids';
@@ -8,10 +8,20 @@ import { useList } from 'react-use';
 import fetch from 'isomorphic-unfetch';
 import { parse } from 'cookie';
 import Router from 'next/router';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 type BallotProps = { id: string; options: string[]; votes: number[][] };
 const Ballot: React.FC<BallotProps> = ({ id, options, votes }) => {
     const [ratings, { updateAt }] = useList<number>();
+    const [copied, setCopied] = useState(false);
+    useEffect(() => {
+        if (copied) {
+            const i = setTimeout(() => {
+                setCopied(false);
+            }, 10_000);
+            return () => clearTimeout(i);
+        }
+    }, [copied]);
     const sorted = options
         .map((key, i) => ({
             key,
@@ -27,6 +37,20 @@ const Ballot: React.FC<BallotProps> = ({ id, options, votes }) => {
                 <Typography component="h1" variant="h4" align="center">
                     Star Voting
                 </Typography>
+                <Box textAlign="center">
+                    <CopyToClipboard
+                        text={
+                            typeof document === 'undefined'
+                                ? ''
+                                : document.location.href
+                        }
+                        onCopy={() => setCopied(true)}
+                    >
+                        <Button variant={copied ? 'text' : 'contained'}>
+                            {copied ? 'Copied!' : 'Copy Link'}
+                        </Button>
+                    </CopyToClipboard>
+                </Box>
             </Box>
             <Paper>
                 {votes.length ? (
