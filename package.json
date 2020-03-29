@@ -1,0 +1,30 @@
+{
+    "name": "star-vote",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Eric Wyne",
+    "license": "MIT",
+    "scripts": {
+        "start": "next",
+        "build": "next build"
+    },
+    "dependencies": {
+        "@material-ui/core": "^4.9.8",
+        "@material-ui/icons": "^4.9.1",
+        "@material-ui/lab": "^4.0.0-alpha.47",
+        "@types/cookie": "^0.3.3",
+        "@types/node": "^13.9.5",
+        "@types/react": "^16.9.27",
+        "cookie": "^0.4.0",
+        "faunadb": "^2.13.1",
+        "hashids": "^2.2.1",
+        "isomorphic-unfetch": "^3.0.0",
+        "next": "^9.3.2",
+        "random-int": "^2.0.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-hook-form": "^5.2.0",
+        "react-use": "^13.27.1",
+        "typescript": "^3.8.3"
+    }
+}

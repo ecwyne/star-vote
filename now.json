@@ -1,0 +1,12 @@
+{
+    "name": "rank-vote",
+    "version": 2,
+    "alias": ["rankvote.now.sh"],
+    "regions": ["sfo1", "iad1"],
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@now/next"
+        }
+    ]
+}
