@@ -4,7 +4,7 @@ import { Container, Box, Typography, Paper, Button } from '@material-ui/core';
 import hash from '../lib/hashids';
 import { client, q } from '../lib/fauna';
 import Rating from '@material-ui/lab/Rating';
-import { useList } from 'react-use';
+import { useList, useTitle } from 'react-use';
 import fetch from 'isomorphic-unfetch';
 import { parse } from 'cookie';
 import Router from 'next/router';
@@ -12,6 +12,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 
 type BallotProps = { id: string; options: string[]; votes: number[][] };
 const Ballot: React.FC<BallotProps> = ({ id, options, votes }) => {
+    useTitle(`Star Voting${votes.length ? ` | ${votes.length} votes` : ''}`);
     const [ratings, { updateAt }] = useList<number>();
     const [copied, setCopied] = useState(false);
     const [countdown, setCountdown] = useState(30);
