@@ -1,7 +1,7 @@
 import { Client, query } from 'faunadb';
 
 export const client = new Client({
-    secret: 'fnADoE13aLACATFpczpQwgg2UFtgKwFBG_8GWoit',
+    secret: process.env.FAUNA_SECRET as string,
 });
 
 export const q = query;
