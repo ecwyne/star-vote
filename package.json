@@ -20,7 +20,7 @@
         "faunadb": "^2.13.1",
         "hashids": "^2.2.1",
         "isomorphic-unfetch": "^3.0.0",
-        "next": "^9.3.5",
+        "next": "^11.1.0",
         "random-int": "^2.0.1",
         "react": "^16.13.1",
         "react-copy-to-clipboard": "^5.0.2",
